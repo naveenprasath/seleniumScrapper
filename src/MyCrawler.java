@@ -86,7 +86,6 @@ public class MyCrawler {
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.HOURS);
         Document CONED = Jsoup.parse(driver.getPageSource());
         String CONEDtext = CONED.body().text();
-        driver.quit();
 
         System.out.println("DirectEnergy_Alberta_PWR, " +AB_PWRtext);
         System.out.println("DirectEnergy_Houston_PWR, " +TX_PWRHtext);
@@ -104,6 +103,7 @@ public class MyCrawler {
             String CONtext = CON.body().text().replaceAll("\n", "");
             System.out.println(CONtext);
         }
+        driver.quit();
     }
     public static String extractPrice(String text) {
         Pattern regex = Pattern.compile("(\\d+(?:\\.\\d+)?)");
